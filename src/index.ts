@@ -33,10 +33,8 @@ const main = async () => {
   const app = express();
 
   var options = {
-    host: "localhost",
+    host: process.env.DB_HOSTNAME,
     port: 3306,
-    user: "root",
-    password: "root",
     database: "lireddit2",
     expiration: Infinity,
   };
