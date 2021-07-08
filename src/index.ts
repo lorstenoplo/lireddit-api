@@ -15,13 +15,14 @@ import { User } from "./entities/User";
 import { Updoot } from "./entities/Updoot";
 import { createUserLoader } from "./utils/createUserLoader";
 import { createVoteStatusLoader } from "./utils/createVoteStatusLoader";
+import { config } from "dotenv";
 
 const main = async () => {
+  config();
   const conn = await createConnection({
     type: "mysql",
     database: "lireddit2",
-    username: "root",
-    password: "root",
+    host: process.env.DB_HOSTNAME,
     port: 3306,
     logging: true,
     synchronize: true,
