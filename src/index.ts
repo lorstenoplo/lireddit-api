@@ -45,14 +45,14 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: "http://localhost:8080",
+      origin: process.env.ORIGIN,
       credentials: true,
     })
   );
   app.use(
     session({
       store: sessionStore,
-      secret: "HbhsdjuynkjJkuih",
+      secret: process.env.SESSION_SECRET!,
       resave: false,
       saveUninitialized: false,
       name: "qid",
