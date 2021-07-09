@@ -19,6 +19,7 @@ import { config } from "dotenv";
 
 const main = async () => {
   config();
+  console.log(process.env);
   const conn = await createConnection({
     type: "mysql",
     database: "lireddit2",
@@ -27,6 +28,8 @@ const main = async () => {
     logging: true,
     synchronize: true,
     entities: [Post, User, Updoot],
+    username: "",
+    password: "",
   });
 
   // await Post.delete({});
@@ -38,6 +41,8 @@ const main = async () => {
     port: 3306,
     database: "lireddit2",
     expiration: Infinity,
+    username: "",
+    password: "",
   };
 
   const sessionStore = new MySQLStore(options);
