@@ -19,17 +19,17 @@ import { config } from "dotenv";
 
 const main = async () => {
   config();
-  console.log(process.env.DB_HOSTNAME);
-  const conn = await createConnection({
+  // console.log(process.env.DB_HOSTNAME);
+    await createConnection({
     type: "mysql",
-    database: "lireddit2",
-    host: "zbcf6da90-svc.qovery.io",
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOSTNAME,
     port: 3306,
     logging: true,
     synchronize: true,
     entities: [Post, User, Updoot],
-    username: "q-admin-y73nao",
-    password: "IEuyMnUo3ERoRlut",
+    username: "root",
+    password: process.env.DB_PASSWORD,
   });
 
   // await Post.delete({});
@@ -37,12 +37,12 @@ const main = async () => {
   const app = express();
 
   var options = {
-    host: "zbcf6da90-svc.qovery.io",
+    host: process.env.DB_HOSTNAME,
     port: 3306,
-    database: "lireddit2",
+    database: process.env.DB_NAME,
     expiration: Infinity,
-    username: "q-admin-y73nao",
-    password: "IEuyMnUo3ERoRlut",
+    username: "root",
+    password: process.env.DB_PASSWORD,
   };
 
   const sessionStore = new MySQLStore(options);
