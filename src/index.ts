@@ -20,7 +20,7 @@ import { config } from "dotenv";
 const main = async () => {
   config();
   // console.log(process.env.DB_HOSTNAME);
-    await createConnection({
+  await createConnection({
     type: "mysql",
     database: process.env.DB_NAME,
     host: process.env.DB_HOSTNAME,
@@ -87,9 +87,7 @@ const main = async () => {
     cors: false,
   });
 
-  app.listen(4000, () => {
-    console.log("server up and running at http://localhost:4000/graphql");
-  });
+  app.listen(4000, "0.0.0.0");
 };
 
 main().catch((err) => {
