@@ -22,14 +22,14 @@ const main = async () => {
   // console.log(process.env.DB_HOSTNAME);
   await createConnection({
     type: "mysql",
-    database: process.env.QOVERY_MYSQL_ZF41C183C_DEFAULT_DATABASE_NAME,
-    host: process.env.QOVERY_MYSQL_ZF41C183C_HOST,
-    port: process.env.QOVERY_MYSQL_ZF41C183C_PORT as any,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOSTNAME,
+    port: 3306,
     logging: true,
     synchronize: true,
     entities: [Post, User, Updoot],
     username: "root",
-    password: process.env.QOVERY_MYSQL_ZF41C183C_PASSWORD,
+    password: process.env.DB_PASSWORD,
   });
 
   // await Post.delete({});
@@ -39,12 +39,12 @@ const main = async () => {
   app.set("trust proxy",1)
 
   var options = {
-    host: process.env.QOVERY_MYSQL_ZF41C183C_HOST,
-    port: process.env.QOVERY_MYSQL_ZF41C183C_PORT,
-    database: process.env.QOVERY_MYSQL_ZF41C183C_DEFAULT_DATABASE_NAME,
+    host: process.env.DB_HOSTNAME,
+    port: 3306,
+    database: process.env.DB_NAME,
     expiration: Infinity,
     username: "root",
-    password: process.env.QOVERY_MYSQL_ZF41C183C_PASSWORD,
+    password: process.env.DB_PASSWORD,
   };
 
   const sessionStore = new MySQLStore(options);
