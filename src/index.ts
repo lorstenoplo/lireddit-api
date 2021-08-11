@@ -36,6 +36,8 @@ const main = async () => {
 
   const app = express();
 
+  app.set("trust proxy",1)
+
   var options = {
     host: process.env.DB_HOSTNAME,
     port: 3306,
@@ -65,6 +67,8 @@ const main = async () => {
         httpOnly: true,
         secure: __prod__, // cookie only works in prod
         sameSite: "lax", // csrf
+        domain: ".lireddit.social",
+        path:"/"
       },
     })
   );
